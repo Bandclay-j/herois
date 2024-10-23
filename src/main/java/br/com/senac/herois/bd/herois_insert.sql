@@ -14,7 +14,7 @@ INSERT INTO herois (id, nome, apelido, super_poder, fraqueza, historia_origem, p
 (13, 'Matt Murdock', 'Demolidor', 'Sentidos aguçados, habilidades de combate', 'Cegueira', 'Após um acidente com produtos químicos, ficou cego, mas seus outros sentidos foram ampliados.', '1964-04-01'),
 (14, 'Victor Stone', 'Cyborg', 'Força sobre-humana, tecnologia avançada', 'Dependência de sistemas cibernéticos', 'Transformado em um ser meio humano, meio máquina após um acidente devastador.', '1980-10-01'),
 (15, 'Jean Grey', 'Fênix', 'Telepatia, telecinese', 'Incapacidade de controlar os poderes', 'Mutante com poderes telepáticos e telecinéticos, foi possuída pela entidade Fênix.', '1963-09-01'),
-(16, 'T\'Challa', 'Pantera Negra', 'Força, agilidade, inteligência sobre-humana', 'Responsabilidades reais', 'Rei de Wakanda e defensor da nação como o Pantera Negra.', '1966-07-01'),
+(16, 'T\Challa', 'Pantera Negra', 'Força, agilidade, inteligência sobre-humana', 'Responsabilidades reais', 'Rei de Wakanda e defensor da nação como o Pantera Negra.', '1966-07-01'),
 (17, 'Shazam', 'Shazam', 'Força e velocidade sobre-humanas, manipulação de raios', 'Imaturidade', 'Quando Billy Batson pronuncia a palavra "Shazam", transforma-se em um herói adulto.', '1940-02-01'),
 (18, 'Betsy Braddock', 'Psylocke', 'Telepatia, habilidades psíquicas', 'Fragilidade emocional', 'Originalmente uma modelo britânica, teve seu corpo e mente fundidos com o de uma ninja.', '1976-12-01'),
 (19, 'Stephen Strange', 'Doutor Estranho', 'Magia, manipulação das artes místicas', 'Dependência de feitiços', 'Um cirurgião que se tornou o Feiticeiro Supremo para proteger a Terra de ameaças místicas.', '1963-07-01'),

@@ -38,7 +38,7 @@ public class SuperHeroi {
 
     @OneToOne
     @JoinColumn(name = "time_id", referencedColumnName = "id")
-    private Time time;
+    private Equipe equipe;
     
     public int getId() {
         return id;
@@ -83,18 +83,18 @@ public class SuperHeroi {
         this.primeiraAparicao = primeiraAparicao;
     }
 
-    public Time getTime() {
-        return time;
+    public Equipe getEquipe() {
+        return equipe;
     }
 
-    public void setTime(Time time) {
-        this.time = time;
+    public void setEquipe(Equipe equipe) {
+        this.equipe = equipe;
     }
 
     public String exibeDados() {
         return "SuperHéroi: " + getNome() + "\nApelido: " + getApelido() + 
         "\nSuper Poder: " + getSuperPoder() + "\nFraqueza: " + getFraqueza() + 
         "\nHistória de Origem: " + getHistoriaOrigem() + "\nPrimeira Aparição: " + getPrimeiraAparicao() +
-        "\nTime: " + getTime().getNome();
+        "\nTime: " + getEquipe().getNome();
     }
 }
