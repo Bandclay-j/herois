@@ -1,4 +1,4 @@
-INSERT INTO herois (id, nome, apelido, superPoder, fraqueza, historiaOrigem, primeiraAparicao) VALUES
+INSERT INTO herois (id, nome, apelido, super_poder, fraqueza, historia_origem, primeira_aparicao) VALUES
 (1, 'Clark Kent', 'Superman', 'Super força, voo, visão de calor', 'Kryptonita', 'Nascido no planeta Krypton e enviado à Terra como um bebê.', '1938-06-01'),
 (2, 'Bruce Wayne', 'Batman', 'Habilidades de combate, inteligência, gadgets avançados', 'Falta de poderes super-humanos', 'Após testemunhar o assassinato de seus pais, jurou proteger Gotham City.', '1939-05-01'),
 (3, 'Diana Prince', 'Mulher-Maravilha', 'Força divina, agilidade, Laço da Verdade', 'Laços emocionais', 'Princesa das Amazonas, treinada como guerreira desde criança.', '1941-12-01'),
