@@ -1,4 +1,4 @@
-INSERT INTO heroi (id, nome, apelido, superPoder, fraqueza, historiaOrigem, primeiraAparicao) VALUES
+INSERT INTO herois (id, nome, apelido, superPoder, fraqueza, historiaOrigem, primeiraAparicao) VALUES
 (1, 'Clark Kent', 'Superman', 'Super força, voo, visão de calor', 'Kryptonita', 'Nascido no planeta Krypton e enviado à Terra como um bebê.', '1938-06-01'),
 (2, 'Bruce Wayne', 'Batman', 'Habilidades de combate, inteligência, gadgets avançados', 'Falta de poderes super-humanos', 'Após testemunhar o assassinato de seus pais, jurou proteger Gotham City.', '1939-05-01'),
 (3, 'Diana Prince', 'Mulher-Maravilha', 'Força divina, agilidade, Laço da Verdade', 'Laços emocionais', 'Princesa das Amazonas, treinada como guerreira desde criança.', '1941-12-01'),
@@ -30,4 +30,4 @@ INSERT INTO heroi (id, nome, apelido, superPoder, fraqueza, historiaOrigem, prim
 (29, 'Jessica Drew', 'Mulher-Aranha', 'Força sobre-humana, veneno bioelétrico', 'Tóxica para outras pessoas devido aos feromônios', 'Recebeu poderes de aranha após ser exposta a uma combinação de radiação e veneno.', '1977-04-01'),
 (30, 'Johnny Storm', 'Tocha Humana', 'Pirocinese, voo', 'Aversão à água', 'Membro do Quarteto Fantástico, pode inflamar seu corpo e voar.', '1961-11-01');
 
-select * from heroi;
+select * from herois;

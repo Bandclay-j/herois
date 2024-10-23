@@ -2,7 +2,7 @@ CREATE DATABASE herois;
 
 USE herois;
 
-CREATE TABLE heroi (
+CREATE TABLE herois (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(255) NOT NULL,
     apelido VARCHAR(255) NOT NULL,
