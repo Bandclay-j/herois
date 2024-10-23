@@ -17,8 +17,6 @@ CREATE TABLE equipes (
     nome VARCHAR(255) NOT NULL
 );
 
-ALTER TABLE herois ADD equipe_id BIGINT;
-ALTER TABLE herois ADD CONSTRAINT fk_equipe_id FOREIGN KEY (equipe_id) REFERENCES equipes(id);
 UPDATE herois SET equipe_id = 1 WHERE id IN (1, 2, 3, 6, 8, 10, 12, 14, 19);
 UPDATE herois SET equipe_id = 2 WHERE id IN (5, 9, 7, 20, 23);
 UPDATE herois SET equipe_id = 3 WHERE id IN (20, 30);

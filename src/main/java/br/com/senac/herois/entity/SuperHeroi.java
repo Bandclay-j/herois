@@ -37,7 +37,7 @@ public class SuperHeroi {
     private Date primeiraAparicao;
 
     @OneToOne
-    @JoinColumn(name = "time_id", referencedColumnName = "id")
+    @JoinColumn(name = "equipe_id", referencedColumnName = "id")
     private Equipe equipe;
     
     public int getId() {
@@ -95,6 +95,6 @@ public class SuperHeroi {
         return "SuperHéroi: " + getNome() + "\nApelido: " + getApelido() + 
         "\nSuper Poder: " + getSuperPoder() + "\nFraqueza: " + getFraqueza() + 
         "\nHistória de Origem: " + getHistoriaOrigem() + "\nPrimeira Aparição: " + getPrimeiraAparicao() +
-        "\nTime: " + getEquipe().getNome();
+        "\nEquipe: " + getEquipe().getNome();
     }
 }
