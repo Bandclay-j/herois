@@ -11,7 +11,7 @@ public interface SuperHeroiRepository extends JpaRepository<SuperHeroi, Integer>
 
     ArrayList<SuperHeroi> findByApelidoLike(String apelido);
 
-    ArrayList<SuperHeroi> findByPoderLike(String poder);
+    ArrayList<SuperHeroi> findBySuperPoderLike(String superPoder);
 
-    ArrayList<SuperHeroi> findByEquipeLike(Equipe equipe);
+    ArrayList<SuperHeroi> findByEquipe(Equipe equipe);
 }

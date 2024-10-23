@@ -2,6 +2,7 @@ package br.com.senac.herois.controller;
 
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,34 +21,35 @@ import br.com.senac.herois.repository.SuperHeroiRepository;
 @RestController
 public class SuperHeroiController {
 
+    @Autowired
     private SuperHeroiRepository superHeroiRepository;
 
-    @GetMapping("/superHerois")
+    @GetMapping("/superHeroi")
     public ResponseEntity<?> getDadosSuperHeroi() {
         return new ResponseEntity<>(superHeroiRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/superHerois/{id}")
+    @GetMapping("/superHeroi/{id}")
     public ResponseEntity<?> getSuperHeroiById(@PathVariable int id) {
         return new ResponseEntity<>(superHeroiRepository.findById(id), HttpStatus.OK);
     }
     
-    @GetMapping("/superHerois/apelido/{apelido}")
+    @GetMapping("/superHeroi/apelido/{apelido}")
     public ResponseEntity<?> getSuperHeroiByApelido(@PathVariable String apelido) {
         return new ResponseEntity<>(superHeroiRepository.findByApelidoLike('%' + apelido + '%'), HttpStatus.OK);
     }
 
-    @GetMapping("/superHerois/poder/{poder}")
-    public ResponseEntity<?> getSuperHeroiByPoder(@PathVariable String poder) {
-        return new ResponseEntity<>(superHeroiRepository.findByPoderLike('%' + poder + '%'), HttpStatus.OK);
+    @GetMapping("/superHeroi/poder/{poder}")
+    public ResponseEntity<?> getSuperHeroiByPoder(@PathVariable String superPoder) {
+        return new ResponseEntity<>(superHeroiRepository.findBySuperPoderLike('%' + superPoder + '%'), HttpStatus.OK);
     }
 
-    @GetMapping("/superHerois/equipe/{equipe}")
+    @GetMapping("/superHeroi/equipe/{equipe}")
     public ResponseEntity<?> getSuperHeroiByEquipe(@PathVariable Equipe equipe) {
-        return new ResponseEntity<>(superHeroiRepository.findByEquipeLike(equipe), HttpStatus.OK);
+        return new ResponseEntity<>(superHeroiRepository.findByEquipe(equipe), HttpStatus.OK);
     }
 
-    @PostMapping("/superHerois")
+    @PostMapping("/superHeroi")
     public ResponseEntity<?> salvarSuperHerois(@RequestBody SuperHeroi entity) {
         SuperHeroi superHeroi;
         try {
@@ -59,7 +61,7 @@ public class SuperHeroiController {
         return new ResponseEntity<SuperHeroi>(superHeroi, HttpStatus.OK);
     }
 
-    @PutMapping("/superHerois/{id}")
+    @PutMapping("/superHeroi/{id}")
     public ResponseEntity<?> atualizaSuperHeroi(@PathVariable int id, @RequestBody SuperHeroi entity) {
         
         Optional<SuperHeroi> superHeroiAtualizar = superHeroiRepository.findById(id);
@@ -86,7 +88,7 @@ public class SuperHeroiController {
         }
     }
 
-    @DeleteMapping("/superHerois/{id}")
+    @DeleteMapping("/superHeroi/{id}")
     public ResponseEntity<?> deletaSuperHeroi(@PathVariable int id) {
         
         Optional<SuperHeroi> superHeroiExcluir = superHeroiRepository.findById(id);
