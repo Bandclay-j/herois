@@ -7,6 +7,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -15,18 +17,28 @@ public class SuperHeroi {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column
     private String nome;
+
     @Column
     private String apelido;
+
     @Column
     private String superPoder;
+
     @Column
     private String fraqueza;
+
     @Column
     private String historiaOrigem;
+
     @Column
     private Date primeiraAparicao;
+
+    @OneToOne
+    @JoinColumn(name = "time_id", referencedColumnName = "id")
+    private Time time;
     
     public int getId() {
         return id;
@@ -71,9 +83,18 @@ public class SuperHeroi {
         this.primeiraAparicao = primeiraAparicao;
     }
 
+    public Time getTime() {
+        return time;
+    }
+
+    public void setTime(Time time) {
+        this.time = time;
+    }
+
     public String exibeDados() {
         return "SuperHéroi: " + getNome() + "\nApelido: " + getApelido() + 
         "\nSuper Poder: " + getSuperPoder() + "\nFraqueza: " + getFraqueza() + 
-        "\nHistória de Origem: " + getHistoriaOrigem() + "\nPrimeira Aparição: " + getPrimeiraAparicao();
+        "\nHistória de Origem: " + getHistoriaOrigem() + "\nPrimeira Aparição: " + getPrimeiraAparicao() +
+        "\nTime: " + getTime().getNome();
     }
 }
