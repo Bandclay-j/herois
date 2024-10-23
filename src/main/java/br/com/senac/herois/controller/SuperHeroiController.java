@@ -1,6 +1,7 @@
 package br.com.senac.herois.controller;
 
 import java.util.Optional;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import br.com.senac.herois.entity.Equipe;
 import br.com.senac.herois.entity.SuperHeroi;
 import br.com.senac.herois.repository.SuperHeroiRepository;
 
@@ -29,6 +32,21 @@ public class SuperHeroiController {
         return new ResponseEntity<>(superHeroiRepository.findById(id), HttpStatus.OK);
     }
     
+    @GetMapping("/superHerois/apelido/{apelido}")
+    public ResponseEntity<?> getSuperHeroiByApelido(@PathVariable String apelido) {
+        return new ResponseEntity<>(superHeroiRepository.findByApelidoLike('%' + apelido + '%'), HttpStatus.OK);
+    }
+
+    @GetMapping("/superHerois/poder/{poder}")
+    public ResponseEntity<?> getSuperHeroiByPoder(@PathVariable String poder) {
+        return new ResponseEntity<>(superHeroiRepository.findByPoderLike('%' + poder + '%'), HttpStatus.OK);
+    }
+
+    @GetMapping("/superHerois/equipe/{equipe}")
+    public ResponseEntity<?> getSuperHeroiByEquipe(@PathVariable Equipe equipe) {
+        return new ResponseEntity<>(superHeroiRepository.findByEquipeLike(equipe), HttpStatus.OK);
+    }
+
     @PostMapping("/superHerois")
     public ResponseEntity<?> salvarSuperHerois(@RequestBody SuperHeroi entity) {
         SuperHeroi superHeroi;
