@@ -55,7 +55,7 @@ public class SuperHeroiController {
         try {
             superHeroi = superHeroiRepository.save(entity);
         } catch (Exception e) {
-            return new ResponseEntity<String>("Erro ao salvar o super Heroi", HttpStatus.BAD_REQUEST);        
+            return new ResponseEntity<>("Erro ao salvar o super Heroi", HttpStatus.BAD_REQUEST);        
         }
 
         return new ResponseEntity<SuperHeroi>(superHeroi, HttpStatus.OK);

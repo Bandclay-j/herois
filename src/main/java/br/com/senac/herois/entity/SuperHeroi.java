@@ -40,6 +40,18 @@ public class SuperHeroi {
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
     private Equipe equipe;
     
+    public SuperHeroi(int id, String nome, String apelido, String superPoder, String fraqueza, String historiaOrigem,
+            Date primeiraAparicao, Equipe equipe) {
+        this.id = id;
+        this.nome = nome;
+        this.apelido = apelido;
+        this.superPoder = superPoder;
+        this.fraqueza = fraqueza;
+        this.historiaOrigem = historiaOrigem;
+        this.primeiraAparicao = primeiraAparicao;
+        this.equipe = equipe;
+    }
+
     public int getId() {
         return id;
     }
@@ -92,9 +104,11 @@ public class SuperHeroi {
     }
 
     public String exibeDados() {
-        return "SuperHéroi: " + getNome() + "\nApelido: " + getApelido() + 
-        "\nSuper Poder: " + getSuperPoder() + "\nFraqueza: " + getFraqueza() + 
-        "\nHistória de Origem: " + getHistoriaOrigem() + "\nPrimeira Aparição: " + getPrimeiraAparicao() +
-        "\nEquipe: " + getEquipe().getNome();
+        return "SuperHéroi: " + getNome() + 
+        "\nApelido: " + getApelido() + 
+        "\nSuper Poder: " + getSuperPoder() + 
+        "\nFraqueza: " + getFraqueza() + 
+        "\nHistória de Origem: " + getHistoriaOrigem() + 
+        "\nPrimeira Aparição: " + getPrimeiraAparicao();
     }
 }
