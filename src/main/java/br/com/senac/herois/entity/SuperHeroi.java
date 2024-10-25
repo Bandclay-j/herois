@@ -40,6 +40,9 @@ public class SuperHeroi {
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
     private Equipe equipe;
     
+    public SuperHeroi() {
+    }
+
     public SuperHeroi(int id, String nome, String apelido, String superPoder, String fraqueza, String historiaOrigem,
             Date primeiraAparicao, Equipe equipe) {
         this.id = id;

@@ -18,6 +18,9 @@ public class Equipe {
     @Column
     private String nome;
 
+    public Equipe() {
+    }
+
     public Equipe(int id, String nome) {
         this.id = id;
         this.nome = nome;
