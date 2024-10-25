@@ -1,10 +1,10 @@
 USE herois;
 
-INSERT INTO equipes (nome) VALUES 
+INSERT INTO equipe (nome) VALUES 
 ('Liga da Justiça'),
 ('Vingadores'),
 ('Quarteto Fantástico'),
 ('X-men'),
 ('outros');
 
-SELECT * from equipes;
+SELECT * from equipe;
