@@ -2,13 +2,16 @@ package br.com.senac.herois.entity;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -36,10 +39,11 @@ public class SuperHeroi {
     @Column
     private Date primeiraAparicao;
 
-    @OneToOne
+    @ManyToOne(fetch= FetchType.EAGER)
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
+    @JsonManagedReference
     private Equipe equipe;
-    
+
     public SuperHeroi() {
     }
 
@@ -108,10 +112,11 @@ public class SuperHeroi {
 
     public String exibeDados() {
         return "SuperHéroi: " + getNome() + 
-        "\nApelido: " + getApelido() + 
-        "\nSuper Poder: " + getSuperPoder() + 
-        "\nFraqueza: " + getFraqueza() + 
-        "\nHistória de Origem: " + getHistoriaOrigem() + 
-        "\nPrimeira Aparição: " + getPrimeiraAparicao();
+               "\nApelido: " + getApelido() + 
+               "\nSuper Poder: " + getSuperPoder() + 
+               "\nFraqueza: " + getFraqueza() + 
+               "\nHistória de Origem: " + getHistoriaOrigem() + 
+               "\nPrimeira Aparição: " + getPrimeiraAparicao() +
+               "\nEquipe: " + (getEquipe() != null ? getEquipe().getNome() : "Sem equipe");
     }
 }
