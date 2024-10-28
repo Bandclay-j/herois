@@ -3,7 +3,6 @@ package br.com.senac.herois.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -25,7 +24,6 @@ public class Equipe {
     private String nome;
 
     @OneToMany(mappedBy = "equipe")
-    @JsonBackReference
     private List<SuperHeroi> superHeroi = new ArrayList<>();
 
     public Equipe() {

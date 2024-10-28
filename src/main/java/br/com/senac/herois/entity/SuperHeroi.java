@@ -2,11 +2,8 @@ package br.com.senac.herois.entity;
 
 import java.util.Date;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,9 +36,8 @@ public class SuperHeroi {
     @Column
     private Date primeiraAparicao;
 
-    @ManyToOne(fetch= FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
-    @JsonManagedReference
     private Equipe equipe;
 
     public SuperHeroi() {
@@ -103,6 +99,9 @@ public class SuperHeroi {
     }
 
     public Equipe getEquipe() {
+        if (this.equipe != null) {
+            this.equipe.setSuperHeroi(null);
+        }
         return equipe;
     }
 
