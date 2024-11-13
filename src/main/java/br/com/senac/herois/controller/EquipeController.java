@@ -3,6 +3,7 @@ package br.com.senac.herois.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.senac.herois.entity.Equipe;
 import br.com.senac.herois.repository.EquipeRepository;
+import br.com.senac.herois.repository.SuperHeroiRepository;
 
 
 
@@ -25,13 +27,8 @@ public class EquipeController {
     @Autowired
     private EquipeRepository equipeRepository;
 
-    public EquipeRepository getEquipeRepository() {
-        return equipeRepository;
-    }
-
-    public void setEquipeRepository(EquipeRepository equipeRepository) {
-        this.equipeRepository = equipeRepository;
-    }
+    @Autowired
+    private SuperHeroiRepository superHeroiRepository;
 
     @GetMapping("/equipes")
     public ResponseEntity<?> getDadosEquipes() {
@@ -79,11 +76,16 @@ public class EquipeController {
 
         if (equipeExcluir.isPresent()) {
             try {
+                // Excluir os superHerois associados antes de excluir a Equipe
+                superHeroiRepository.findByEquipe(equipeExcluir.get()).forEach(superHeroi -> superHeroiRepository.delete(superHeroi));
+
+                // Agora, exclua a equipe
                 equipeRepository.delete(equipeExcluir.get());
                 return new ResponseEntity<>("Equipe excluída com sucesso", HttpStatus.NO_CONTENT);
             } catch (Exception e) {
                 return new ResponseEntity<>("Erro ao excluir a equipe", HttpStatus.BAD_REQUEST);
             }
+
         } else {
             return new ResponseEntity<>("Equipe não encontrada", HttpStatus.NOT_FOUND);
         }

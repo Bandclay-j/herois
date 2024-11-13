@@ -3,7 +3,6 @@ package br.com.senac.herois.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,8 +25,7 @@ public class Equipe {
     @OneToMany(mappedBy = "equipe")
     private List<SuperHeroi> superHeroi = new ArrayList<>();
 
-    public Equipe() {
-    }
+    public Equipe() {}
 
     public Equipe(int id, String nome, List<SuperHeroi> superHeroi) {
         this.id = id;
