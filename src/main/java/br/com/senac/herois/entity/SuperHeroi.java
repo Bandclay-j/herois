@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -36,6 +37,10 @@ public class SuperHeroi {
     @Column
     private Date primeiraAparicao;
 
+    @Lob
+    @Column
+    private byte[] imagem;
+
     @ManyToOne
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
     private Equipe equipe;
@@ -43,7 +48,7 @@ public class SuperHeroi {
     public SuperHeroi() {}
 
     public SuperHeroi(int id, String nome, String apelido, String superPoder, String fraqueza, String historiaOrigem,
-            Date primeiraAparicao, Equipe equipe) {
+            Date primeiraAparicao, Equipe equipe, byte[] imagem) {
         this.id = id;
         this.nome = nome;
         this.apelido = apelido;
@@ -52,6 +57,7 @@ public class SuperHeroi {
         this.historiaOrigem = historiaOrigem;
         this.primeiraAparicao = primeiraAparicao;
         this.equipe = equipe;
+        this.imagem = imagem;
     }
 
     public int getId() {
@@ -97,6 +103,14 @@ public class SuperHeroi {
         this.primeiraAparicao = primeiraAparicao;
     }
 
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
     public Equipe getEquipe() {
         if (this.equipe != null) {
             this.equipe.setSuperHeroi(null);
@@ -115,6 +129,7 @@ public class SuperHeroi {
                "\nFraqueza: " + getFraqueza() + 
                "\nHistória de Origem: " + getHistoriaOrigem() + 
                "\nPrimeira Aparição: " + getPrimeiraAparicao() +
+               "\nImagem: " + (getImagem() != null ? "Sim" : "Não") +
                "\nEquipe: " + (getEquipe() != null ? getEquipe().getNome() : "Sem equipe");
     }
 }
