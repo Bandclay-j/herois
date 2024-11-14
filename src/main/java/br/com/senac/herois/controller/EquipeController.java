@@ -3,7 +3,6 @@ package br.com.senac.herois.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -46,15 +45,15 @@ public class EquipeController {
         try {
             equipeSalva = equipeRepository.save(entity);
         } catch (Exception e) {
-            return new ResponseEntity<String>("Erro ao salvar a equipe", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Erro ao salvar a equipe", HttpStatus.BAD_REQUEST);
         }
-        return new ResponseEntity<Equipe>(equipeSalva, HttpStatus.OK);
+        return new ResponseEntity<>(equipeSalva, HttpStatus.OK);
     }
 
     @PutMapping("equipes/{id}")
     public ResponseEntity<?> atualizaEquipe(@PathVariable int id, @RequestBody Equipe entity) {
         Optional<Equipe> equipeAtualizar = equipeRepository.findById(id);
-        Equipe e = null;
+        Equipe e;
         if (equipeAtualizar.isPresent()) {
             e = equipeAtualizar.get();
             e.setNome(entity.getNome());
@@ -62,11 +61,11 @@ public class EquipeController {
             try {
                 e = equipeRepository.save(e);
             } catch (Exception s) {
-                return new ResponseEntity<String>("Erro ao atualizar a equipe", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Erro ao atualizar a equipe", HttpStatus.BAD_REQUEST);
             }
-            return new ResponseEntity<Equipe>(e, HttpStatus.OK); 
+            return new ResponseEntity<>(e, HttpStatus.OK); 
         } else {
-            return new ResponseEntity<String>("Equipe não encontrada", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Equipe não encontrada", HttpStatus.BAD_REQUEST);
         }
     }
 

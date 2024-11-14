@@ -58,14 +58,14 @@ public class SuperHeroiController {
             return new ResponseEntity<>("Erro ao salvar o super Heroi", HttpStatus.BAD_REQUEST);        
         }
 
-        return new ResponseEntity<SuperHeroi>(superHeroi, HttpStatus.OK);
+        return new ResponseEntity<>(superHeroi, HttpStatus.OK);
     }
 
     @PutMapping("/superHeroi/{id}")
     public ResponseEntity<?> atualizaSuperHeroi(@PathVariable int id, @RequestBody SuperHeroi entity) {
         
         Optional<SuperHeroi> superHeroiAtualizar = superHeroiRepository.findById(id);
-        SuperHeroi sh = null;
+        SuperHeroi sh;
 
         if (superHeroiAtualizar.isPresent()) {
             sh = superHeroiAtualizar.get();
@@ -80,11 +80,11 @@ public class SuperHeroiController {
             try {
                 sh = superHeroiRepository.save(sh);
             } catch (Exception e) {
-                return new ResponseEntity<String>("Erro ao atualizar o super Heroi", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Erro ao atualizar o super Heroi", HttpStatus.BAD_REQUEST);
             }
-            return new ResponseEntity<SuperHeroi>(sh, HttpStatus.OK);
+            return new ResponseEntity<>(sh, HttpStatus.OK);
         } else {
-            return new ResponseEntity<String>("Super Heroi não encontrado", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Super Heroi não encontrado", HttpStatus.NOT_FOUND);
         }
     }
 
@@ -92,7 +92,7 @@ public class SuperHeroiController {
     public ResponseEntity<?> deletaSuperHeroi(@PathVariable int id) {
         
         Optional<SuperHeroi> superHeroiExcluir = superHeroiRepository.findById(id);
-        SuperHeroi sh = null;
+        SuperHeroi sh;
 
         if (superHeroiExcluir.isPresent()) {
             sh = superHeroiExcluir.get();
@@ -100,11 +100,11 @@ public class SuperHeroiController {
             try {
                 superHeroiRepository.delete(sh);
             } catch (Exception e) {
-                return new ResponseEntity<String>("Erro ao deletar o super Heroi", HttpStatus.BAD_REQUEST);
+                return new ResponseEntity<>("Erro ao deletar o super Heroi", HttpStatus.BAD_REQUEST);
             }
-            return new ResponseEntity<SuperHeroi>(sh, HttpStatus.OK);
+            return new ResponseEntity<>(sh, HttpStatus.OK);
         } else {
-            return new ResponseEntity<String>("Super Heroi não encontrado", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("Super Heroi não encontrado", HttpStatus.NOT_FOUND);
         }
     }
 }

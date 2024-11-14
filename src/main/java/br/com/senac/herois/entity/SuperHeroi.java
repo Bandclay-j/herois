@@ -8,7 +8,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -37,9 +36,8 @@ public class SuperHeroi {
     @Column
     private Date primeiraAparicao;
 
-    @Lob
     @Column
-    private byte[] imagem;
+    private String imagem;
 
     @ManyToOne
     @JoinColumn(name = "equipe_id", referencedColumnName = "id")
@@ -48,7 +46,7 @@ public class SuperHeroi {
     public SuperHeroi() {}
 
     public SuperHeroi(int id, String nome, String apelido, String superPoder, String fraqueza, String historiaOrigem,
-            Date primeiraAparicao, Equipe equipe, byte[] imagem) {
+            Date primeiraAparicao, Equipe equipe, String imagem) {
         this.id = id;
         this.nome = nome;
         this.apelido = apelido;
@@ -103,11 +101,11 @@ public class SuperHeroi {
         this.primeiraAparicao = primeiraAparicao;
     }
 
-    public byte[] getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
